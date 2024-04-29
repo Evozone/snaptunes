@@ -49,7 +49,7 @@ const OnePath: React.FC<OnePathProps> = ({
                 </filter>
             </defs>
         </svg>
-        <div className="absolute -top-80 md:-top-72 w-full">
+        <div className="absolute -top-72 md:-top-64 -left-20 w-full">
             <motion.div
                 className="box"
                 initial={{ offsetDistance: '0%' }}

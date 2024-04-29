@@ -50,7 +50,7 @@ const paths = [
     },
     {
         pathData: PATH5,
-        strokeColor: '#78f275',
+        strokeColor: '#B1C5FE',
         transition: transitionOut,
         vectorUrl: './music.svg',
     },

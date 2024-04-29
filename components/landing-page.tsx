@@ -4,6 +4,11 @@ import React from 'react';
 import Link from 'next/link';
 import AnimatedPaths from './animated-paths';
 
+import { Geologica, Jersey_25 } from 'next/font/google';
+
+const geologica = Geologica({ subsets: ['latin'] });
+const jersey25 = Jersey_25({ weight: '400', subsets: ['latin'] });
+
 const LandingPage = ({
     title,
     description,
@@ -16,11 +21,13 @@ const LandingPage = ({
     return (
         <div className={cn('sticky', className)}>
             {/* Title */}
-            <p className="text-lg md:text-7xl font-normal pb-4 text-center bg-clip-text text-transparent bg-gradient-to-b from-neutral-100 to-neutral-300">
+            <p className={`${geologica.className} text-lg md:text-7xl pb-4 text-center`}>
                 {title}
             </p>
             {/* Tagline */}
-            <p className="text-xs md:text-xl font-normal text-center text-neutral-400 my-4 max-w-lg mx-auto">
+            <p
+                className={`${jersey25.className} text-xs md:text-2xl font-normal text-center text-neutral-400 my-4 max-w-lg mx-auto`}
+            >
                 {description}
             </p>
             {/* Icon/Logo */}
