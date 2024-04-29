@@ -21,7 +21,7 @@ const OnePath: React.FC<OnePathProps> = ({
             height="890"
             viewBox="0 0 1440 890"
             xmlns="http://www.w3.org/2000/svg"
-            className="absolute -top-80 md:-top-72 w-full"
+            className="absolute -top-72 md:-top-64 w-full"
         >
             <motion.path
                 d={pathData}
