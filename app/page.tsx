@@ -1,6 +1,6 @@
-"use client";
-import React from "react";
-import { LandingPage } from "@/components/landing-page";
+'use client';
+import React from 'react';
+import LandingPage from '@/components/landing-page';
 
 export default function Home() {
     const ref = React.useRef(null);
@@ -10,10 +10,7 @@ export default function Home() {
             className="h-screen bg-black w-full dark:border dark:border-white/[0.1] rounded-md relative pt-28 overflow-clip"
             ref={ref}
         >
-            <LandingPage
-                title="SnapTunes"
-                description="Transform pixels into music."
-            />
+            <LandingPage title="SnapTunes" description="Transform pixels into music." />
         </div>
     );
 }

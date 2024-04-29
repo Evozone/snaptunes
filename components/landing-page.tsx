@@ -1,15 +1,16 @@
-"use client";
-import { cn } from "@/utils/cn";
-import { motion } from "framer-motion";
-import React from "react";
+'use client';
+import { cn } from '@/utils/cn';
+import { motion } from 'framer-motion';
+import React from 'react';
+import Link from 'next/link';
 
 const transition = {
-    ease: "easeInOut",
+    ease: 'easeInOut',
     repeat: Infinity,
     duration: 4,
 };
 
-export const LandingPage = ({
+const LandingPage = ({
     title,
     description,
     className,
@@ -19,7 +20,7 @@ export const LandingPage = ({
     className?: string;
 }) => {
     return (
-        <div className={cn("sticky", className)}>
+        <div className={cn('sticky', className)}>
             {/* Title */}
             <p className="text-lg md:text-7xl font-normal pb-4 text-center bg-clip-text text-transparent bg-gradient-to-b from-neutral-100 to-neutral-300">
                 {title || `SnapTunes`}
@@ -38,10 +39,10 @@ export const LandingPage = ({
             {/* Two buttons */}
             <div className="w-full flex justify-center md:mt-40 mt-12 z-50 items-center absolute">
                 <button className="rounded-full px-3 py-2 bg-black text-blue-700 gradient-border">
-                    Get Started Now!
+                    <Link href="/webapp">Get Started Now!</Link>
                 </button>
                 <button className="rounded-full px-3 py-2 ml-4 bg-white text-black hover:bg-blue-600 hover:text-white">
-                    How it Works
+                    <Link href="/how-it-works">How it Works</Link>
                 </button>
             </div>
 
@@ -151,3 +152,5 @@ export const LandingPage = ({
         </div>
     );
 };
+
+export default LandingPage;
