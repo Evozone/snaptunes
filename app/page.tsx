@@ -7,7 +7,7 @@ export default function Home() {
 
     return (
         <div
-            className="h-screen bg-black w-full dark:border dark:border-white/[0.1] rounded-md relative pt-24 overflow-clip"
+            className="h-screen bg-black w-screen relative pt-24 overflow-clip"
             ref={ref}
         >
             <LandingPage title="SnapTunes" description="Transform pixels into music." />

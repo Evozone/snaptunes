@@ -7,21 +7,25 @@ interface OnePathProps {
     strokeColor: string;
     transition: any;
     vectorUrl: string;
+    type: number;
 }
+
+const viewportWidth = window.innerWidth;
 
 const OnePath: React.FC<OnePathProps> = ({
     pathData,
     strokeColor,
     transition,
     vectorUrl,
+    type,
 }) => (
-    <>
+    <div className="absolute -top-64 md:-top-64 w-full">
         <svg
-            width="1440"
+            width={viewportWidth}
             height="890"
-            viewBox="0 0 1440 890"
+            viewBox={`0 0 ${viewportWidth} 890`}
             xmlns="http://www.w3.org/2000/svg"
-            className="absolute -top-72 md:-top-64 w-full"
+            className="absolute top-0 left-0 z-0"
         >
             <motion.path
                 d={pathData}
@@ -29,10 +33,10 @@ const OnePath: React.FC<OnePathProps> = ({
                 strokeWidth="2"
                 fill="none"
                 initial={{ pathLength: 0 }}
-                animate={{ pathLength: 1 }}
+                animate={{ pathLength: type === 1 ? [0, 0, 1] : [0, 1] }}
                 transition={{
                     ...transition,
-                    repeatType: strokeColor === '#B1C5FF' ? 'loop' : 'reverse',
+                    times: type === 1 ? [0, 0.5, 1] : [0, 1],
                 }}
             />
             <path
@@ -49,19 +53,21 @@ const OnePath: React.FC<OnePathProps> = ({
                 </filter>
             </defs>
         </svg>
-        <div className="absolute -top-72 md:-top-64 -left-20 w-full">
-            <motion.div
-                className="box"
-                initial={{ offsetDistance: '0%' }}
-                animate={{ offsetDistance: '100%' }}
-                style={{
-                    offsetPath: `path('${pathData}')`,
-                    backgroundImage: `url(${vectorUrl})`,
-                }}
-                transition={{ ...transition, repeatDelay: 4 }}
-            />
-        </div>
-    </>
+        <motion.div
+            className="box absolute top-0 left-0 z-10"
+            initial={{ offsetDistance: '0%', opacity: 0, scale: 0.5 }}
+            animate={{
+                offsetDistance: type === 1 ? ['0%', '0%', '100%'] : ['0%', '100%'],
+                opacity: 1,
+                scale: 1.5,
+            }}
+            style={{
+                offsetPath: `path('${pathData}')`,
+                backgroundImage: `url(${vectorUrl})`,
+            }}
+            transition={{ ...transition, times: type === 1 ? [0, 0.5, 1] : [0, 1] }}
+        />
+    </div>
 );
 
 export default OnePath;

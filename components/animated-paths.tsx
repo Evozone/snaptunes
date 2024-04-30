@@ -1,6 +1,17 @@
 import React from 'react';
 
-import { PATH0, PATH1, PATH2, PATH3, PATH4, PATH5 } from './paths/paths';
+import {
+    PATH_IN_0,
+    PATH_IN_1,
+    PATH_IN_2,
+    PATH_IN_3,
+    PATH_IN_4,
+    PATH_OUT_0,
+    PATH_OUT_1,
+    PATH_OUT_2,
+    PATH_OUT_3,
+    PATH_OUT_4,
+} from './paths/paths';
 import OnePath from './paths/one-path';
 
 const transitionIn = {
@@ -11,57 +22,53 @@ const transitionIn = {
 };
 
 const transitionOut = {
-    delay: 4,
     repeat: Infinity,
     ease: 'linear',
-    duration: 4,
+    duration: 8,
+};
+
+type PathType = {
+    pathData: string;
+    strokeColor: string;
+    transition: any;
+    vectorUrl: string;
+    type: number;
+};
+
+const createPath = (pathData: string, strokeColor: string, type: number): PathType => {
+    const transition = type === 0 ? transitionIn : transitionOut;
+    const vectorUrl = type === 0 ? './image.svg' : './music.svg';
+
+    return {
+        pathData,
+        strokeColor,
+        transition,
+        vectorUrl,
+        type,
+    };
 };
 
 const paths = [
-    {
-        pathData: PATH0,
-        strokeColor: '#076EFF',
-        transition: transitionOut,
-        vectorUrl: './music.svg',
-    },
-    {
-        pathData: PATH1,
-        strokeColor: '#4FABFF',
-        transition: transitionOut,
-        vectorUrl: './music.svg',
-    },
-    {
-        pathData: PATH2,
-        strokeColor: '#B1C5FF',
-        transition: transitionIn,
-        vectorUrl: './image.svg',
-    },
-    {
-        pathData: PATH3,
-        strokeColor: '#FFDDB7',
-        transition: transitionOut,
-        vectorUrl: './music.svg',
-    },
-    {
-        pathData: PATH4,
-        strokeColor: '#FFB7C5',
-        transition: transitionOut,
-        vectorUrl: './music.svg',
-    },
-    {
-        pathData: PATH5,
-        strokeColor: '#B1C5FE',
-        transition: transitionOut,
-        vectorUrl: './music.svg',
-    },
+    createPath(PATH_IN_0, '#076EFF', 0),
+    createPath(PATH_IN_1, '#4FABFF', 0),
+    createPath(PATH_IN_2, '#B1C5FF', 0),
+    createPath(PATH_IN_3, '#FFDDB7', 0),
+    createPath(PATH_IN_4, '#FFB7C5', 0),
+    createPath(PATH_OUT_0, '#076EFF', 1),
+    createPath(PATH_OUT_1, '#4FABFF', 1),
+    createPath(PATH_OUT_2, '#B1C5FF', 1),
+    createPath(PATH_OUT_3, '#FFDDB7', 1),
+    createPath(PATH_OUT_4, '#FFB7C5', 1),
 ];
 
 export default function AnimatedPaths() {
     return (
-        <>
-            {paths.map((path, index) => (
-                <OnePath key={index} {...path} />
-            ))}
-        </>
+        <div className="w-full h-[890px] flex justify-center">
+            <div className="relative w-[1440px]">
+                {paths.map((path, index) => (
+                    <OnePath key={index} {...path} />
+                ))}
+            </div>
+        </div>
     );
 }
