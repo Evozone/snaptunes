@@ -1,7 +1,10 @@
 'use client';
 import React from 'react';
 import Link from 'next/link';
-import AnimatedPaths from './paths/animated-paths';
+import dynamic from 'next/dynamic';
+const AnimatedPaths = dynamic(() => import('./paths/animated-paths'), {
+    ssr: false,
+});
 
 import { Geologica, Jersey_25 } from 'next/font/google';
 

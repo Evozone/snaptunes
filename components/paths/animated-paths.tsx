@@ -1,3 +1,5 @@
+'use-client';
+
 import React from 'react';
 
 import {
@@ -12,7 +14,10 @@ import {
     PATH_OUT_3,
     PATH_OUT_4,
 } from './paths';
-import OnePath from './one-path';
+import dynamic from 'next/dynamic';
+const OnePath = dynamic(() => import('./one-path'), {
+    ssr: false,
+});
 
 const transitionIn = {
     ease: 'linear',

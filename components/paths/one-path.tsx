@@ -1,3 +1,5 @@
+'use client';
+
 // AnimatedPath.tsx
 import { motion } from 'framer-motion';
 import './paths.css';
