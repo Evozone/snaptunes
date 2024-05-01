@@ -1,9 +1,8 @@
 'use client';
 import React from 'react';
 import { Geologica } from 'next/font/google';
-import Image from 'next/image';
 import { twMerge } from 'tailwind-merge';
-import { TracingBeam } from '../../components/tracing-beam';
+import { TracingBeam } from '@/components/tracing-beam';
 
 const geologica = Geologica({ subsets: ['latin'] });
 

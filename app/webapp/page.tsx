@@ -4,6 +4,7 @@ import AppBackground from '@/components/AppBackground';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 
+import SongResults from '@/components/song-results';
 import { FileInput } from '@/components/FileInput';
 
 interface FileWithUrl {
@@ -20,6 +21,8 @@ const WebApp = () => {
     const [input, setInput] = useState<FileWithUrl[]>([]);
     const [imageParts, setImageParts] = useState<ImageParts[]>([]);
     const [accessToken, setAccessToken] = useState<string>('');
+    const [loading, setLoading] = useState<boolean>(false);
+    const [rightActive, setRightActive] = useState<boolean>(false);
     const [bollywoodSongsId, setBollywoodSongsId] = useState<string[]>([]);
     const [hollywoodSongsId, setHollywoodSongsId] = useState<string[]>([]);
 
@@ -53,6 +56,8 @@ const WebApp = () => {
 
     const generateSongs = async () => {
         try {
+            setLoading(true);
+            setRightActive(true);
             const response = await fetch('http://localhost:8080/api/recommend-songs', {
                 method: 'POST',
                 headers: {
@@ -83,6 +88,7 @@ const WebApp = () => {
             });
             const hIds = await Promise.all(hIdPromises);
             setHollywoodSongsId(hIds);
+            setLoading(false);
         } catch (error) {
             console.error(error);
             alert('Error generating songs');
@@ -113,22 +119,13 @@ const WebApp = () => {
     return (
         <AppBackground>
             <div className="absolute z-50 inset-0 flex items-center justify-center p-4">
-                <div className="bg-white/20 backdrop-blur-lg backdrop-filter rounded-lg p-4 border-white w-full h-full">
-                    <div className="absolute top-4 right-4">
+                <div className="bg-white/20 backdrop-blur-lg backdrop-filter rounded-lg p-4 border-white w-full h-full flex">
+                    <div className="absolute top-2 left-0">
                         <Link href="/">
                             <button className="rounded-full px-3 py-2 ml-4 bg-white text-black hover:bg-blue-600 hover:text-white">
-                                Go Back
+                                ⇽ Go Back
                             </button>
                         </Link>
-                        <button
-                            className="rounded-full px-3 py-2 ml-4 bg-white text-black"
-                            onClick={() => {
-                                console.log('Bollywood: ', bollywoodSongsId);
-                                console.log('Hollywood: ', hollywoodSongsId);
-                            }}
-                        >
-                            show ids
-                        </button>
                     </div>
                     <div className="flex flex-col items-center justify-center w-1/2 h-full">
                         <FileInput
@@ -138,6 +135,17 @@ const WebApp = () => {
                             imageParts={imageParts}
                             setImageParts={setImageParts}
                         />
+                    </div>
+                    <div className="flex flex-col items-center justify-center w-1/2 h-full">
+                        <div className="h-5/6 items-center w-full justify-start border-2 ml-4 p-4 rounded-lg overflow-y-auto border-dashed">
+                            {rightActive ? (
+                                <SongResults
+                                    {...{ loading, bollywoodSongsId, hollywoodSongsId }}
+                                />
+                            ) : (
+                                <p className="text-white text-xl">No songs to display</p>
+                            )}
+                        </div>
                     </div>
                 </div>
             </div>
