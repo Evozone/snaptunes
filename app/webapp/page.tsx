@@ -2,7 +2,7 @@
 
 import AppBackground from '@/components/AppBackground';
 import Link from 'next/link';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { FileInput } from '@/components/FileInput';
 
@@ -16,19 +16,43 @@ interface ImageParts {
     inlineData: { data: string; mimeType: string };
 }
 
-interface Song {
-    Bollywood: [];
-    Hollywood: [];
-}
-
 const WebApp = () => {
     const [input, setInput] = useState<FileWithUrl[]>([]);
     const [imageParts, setImageParts] = useState<ImageParts[]>([]);
-    const [songs, setSongs] = useState<Song>({ Bollywood: [], Hollywood: [] });
+    const [accessToken, setAccessToken] = useState<string>('');
+    const [bollywoodSongsId, setBollywoodSongsId] = useState<string[]>([]);
+    const [hollywoodSongsId, setHollywoodSongsId] = useState<string[]>([]);
+
+    const generateSpotifyToken = async () => {
+        const authParameters = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: `grant_type=client_credentials&client_id=${process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID}&client_secret=${process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_SECRET}`,
+        };
+        try {
+            fetch('https://accounts.spotify.com/api/token', authParameters)
+                .then((result) => result.json())
+                .then((data) => setAccessToken(data.access_token));
+        } catch (error) {
+            console.error(error);
+            alert(
+                'Error generating Spotify token, please refresh the page and try again.'
+            );
+        }
+    };
+
+    useEffect(() => {
+        generateSpotifyToken();
+        const interval = setInterval(() => {
+            generateSpotifyToken();
+        }, 1800000);
+        return () => clearInterval(interval);
+    }, []);
 
     const generateSongs = async () => {
         try {
-            // send input.base64 to backend and get response
             const response = await fetch('http://localhost:8080/api/recommend-songs', {
                 method: 'POST',
                 headers: {
@@ -44,10 +68,45 @@ const WebApp = () => {
             const jsonData = JSON.parse(data);
             console.log(typeof jsonData);
             console.log(jsonData);
-            setSongs(jsonData);
+
+            const bollywoodSongs = jsonData.Bollywood;
+            // get song id for first 2 bollywoodSongs
+            const bIdPromises = bollywoodSongs.map(async (song: string) => {
+                return await getSongSpotifyId(song);
+            });
+            const bIds = await Promise.all(bIdPromises);
+            setBollywoodSongsId(bIds);
+
+            const hollywoodSongs = jsonData.Hollywood;
+            const hIdPromises = hollywoodSongs.map(async (song: string) => {
+                return await getSongSpotifyId(song);
+            });
+            const hIds = await Promise.all(hIdPromises);
+            setHollywoodSongsId(hIds);
         } catch (error) {
             console.error(error);
             alert('Error generating songs');
+        }
+    };
+
+    const getSongSpotifyId = async (songName: string) => {
+        try {
+            const response = await fetch(
+                `https://api.spotify.com/v1/search?q=${songName}&type=track&market=IN&limit=10&offset=5`,
+                {
+                    headers: {
+                        Authorization: `Bearer ${accessToken}`,
+                    },
+                }
+            );
+            if (response.status !== 200) {
+                throw new Error('Error getting song id');
+            }
+            const data = await response.json();
+            return data.tracks.items[0].id;
+        } catch (error) {
+            console.error(error);
+            alert('Error getting song id');
         }
     };
 
@@ -61,10 +120,17 @@ const WebApp = () => {
                                 Go Back
                             </button>
                         </Link>
+                        <button
+                            className="rounded-full px-3 py-2 ml-4 bg-white text-black"
+                            onClick={() => {
+                                console.log('Bollywood: ', bollywoodSongsId);
+                                console.log('Hollywood: ', hollywoodSongsId);
+                            }}
+                        >
+                            show ids
+                        </button>
                     </div>
                     <div className="flex flex-col items-center justify-center w-1/2 h-full">
-                        {/* <div className="text-4xl">Drop images here</div>
-                        <div className="text-xl">or click to select</div> */}
                         <FileInput
                             input={input}
                             setInput={setInput}
