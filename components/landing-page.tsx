@@ -1,8 +1,7 @@
 'use client';
-import { cn } from '@/utils/cn';
 import React from 'react';
 import Link from 'next/link';
-import AnimatedPaths from './animated-paths';
+import AnimatedPaths from './paths/animated-paths';
 
 import { Geologica, Jersey_25 } from 'next/font/google';
 
