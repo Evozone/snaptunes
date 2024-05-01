@@ -1,6 +1,13 @@
 'use client';
 
-import { forwardRef, useState, type ChangeEvent, type DragEvent } from 'react';
+import {
+    forwardRef,
+    useState,
+    Dispatch,
+    SetStateAction,
+    type ChangeEvent,
+    type DragEvent,
+} from 'react';
 import { cn, validateFileType } from '@/utils/cn';
 
 const MAX_FILE_SIZE = 4000000;
@@ -11,13 +18,33 @@ interface FileWithUrl {
     size: number;
 }
 
+interface ImageParts {
+    inlineData: { data: string; mimeType: string };
+}
+
 export interface InputProps
-    extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type'> {}
+    extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type'> {
+    input: FileWithUrl[];
+    setInput: Dispatch<SetStateAction<FileWithUrl[]>>;
+    generateSongs: () => void;
+    imageParts: ImageParts[];
+    setImageParts: Dispatch<SetStateAction<ImageParts[]>>;
+}
 
 const FileInput = forwardRef<HTMLInputElement, InputProps>(
-    ({ className, ...props }, ref) => {
+    (
+        {
+            className,
+            input,
+            setInput,
+            generateSongs,
+            imageParts,
+            setImageParts,
+            ...props
+        },
+        ref
+    ) => {
         const [dragActive, setDragActive] = useState<boolean>(false);
-        const [input, setInput] = useState<FileWithUrl[]>([]);
 
         const noInput = input.length === 0;
 
@@ -31,6 +58,19 @@ const FileInput = forwardRef<HTMLInputElement, InputProps>(
                 setDragActive(false);
             }
         };
+
+        async function fileToGenerativePart(file: File) {
+            const base64EncodedDataPromise = new Promise<string>((resolve) => {
+                const reader = new FileReader();
+                reader.onloadend = () => {
+                    resolve((reader.result as string)?.split(',')[1]);
+                };
+                reader.readAsDataURL(file);
+            });
+            return {
+                inlineData: { data: await base64EncodedDataPromise, mimeType: file.type },
+            };
+        }
 
         // triggers when file is selected with click
         const handleChange = async (e: ChangeEvent<HTMLInputElement>) => {
@@ -78,6 +118,11 @@ const FileInput = forwardRef<HTMLInputElement, InputProps>(
 
                 const fileData = (await Promise.all(filePromises)) as [];
                 setInput([...fileData, ...input]);
+
+                const newImageParts = await Promise.all(
+                    [...files].map(fileToGenerativePart)
+                );
+                setImageParts([...newImageParts, ...imageParts]);
             }
         };
 
@@ -126,15 +171,22 @@ const FileInput = forwardRef<HTMLInputElement, InputProps>(
                         };
                     });
                 });
-
                 const fileData = (await Promise.all(filePromises)) as [];
                 setInput([...fileData, ...input]);
+
+                const newImageParts = await Promise.all(
+                    [...files].map(fileToGenerativePart)
+                );
+                setImageParts([...newImageParts, ...imageParts]);
             }
         };
 
         const removeImage = (indexToRemove: number) => {
             setInput((prevInput) =>
                 prevInput.filter((_, index) => index !== indexToRemove)
+            );
+            setImageParts((prevImageParts) =>
+                prevImageParts.filter((_, index) => index !== indexToRemove)
             );
         };
 
@@ -296,7 +348,10 @@ const FileInput = forwardRef<HTMLInputElement, InputProps>(
                     </div>
                 </label>
                 {!noInput && (
-                    <button className="mt-3 w-fit rounded-full px-3 py-2 bg-black text-blue-700 gradient-border">
+                    <button
+                        onClick={generateSongs}
+                        className="mt-3 w-fit rounded-full px-3 py-2 bg-black text-blue-700 gradient-border"
+                    >
                         Generate Music
                     </button>
                 )}
