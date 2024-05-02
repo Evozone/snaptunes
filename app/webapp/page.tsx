@@ -72,8 +72,6 @@ const WebApp = () => {
             // the response is in text format
             const data = await response.text();
             const jsonData = JSON.parse(data);
-            console.log(typeof jsonData);
-            console.log(jsonData);
 
             const bollywoodSongs = jsonData.Bollywood;
             // get song id for first 2 bollywoodSongs
@@ -92,7 +90,7 @@ const WebApp = () => {
             setLoading(false);
         } catch (error) {
             console.error(error);
-            alert('Error generating songs');
+            alert('Error generating songs, please refresh the page and try again.');
         }
     };
 
@@ -113,7 +111,7 @@ const WebApp = () => {
             return data.tracks.items[0].id;
         } catch (error) {
             console.error(error);
-            alert('Error getting song id');
+            alert('Error generating songs, please refresh the page and try again.');
         }
     };
 

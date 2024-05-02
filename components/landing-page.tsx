@@ -72,6 +72,8 @@ const LandingPage = ({
                     <a
                         href="https://deepmind.google/technologies/gemini/#build-with-gemini"
                         className="text-blue-700"
+                        target="_blank"
+                        rel="noopener noreferrer"
                     >
                         &apos;Build With Gemini&apos;
                     </a>

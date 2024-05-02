@@ -289,7 +289,8 @@ const FileInput = forwardRef<HTMLInputElement, InputProps>(
                                             <img
                                                 src={(file as { base64: string })?.base64}
                                                 alt=""
-                                                className="object-cover w-full h-full"
+                                                className="rounded-lg object-cover w-full h-full"
+                                                // style={{ borderRadius: '10px' }}
                                             />
                                         </div>
                                     ))}
@@ -352,7 +353,7 @@ const FileInput = forwardRef<HTMLInputElement, InputProps>(
                         onClick={generateSongs}
                         className="mt-3 w-fit rounded-full px-3 py-2 bg-black text-blue-700 gradient-border"
                     >
-                        Generate Music
+                        Recommend Music
                     </button>
                 )}
             </form>
