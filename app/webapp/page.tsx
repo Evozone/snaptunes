@@ -59,13 +59,16 @@ const WebApp = () => {
         try {
             setLoading(true);
             setRightActive(true);
-            const response = await fetch('http://localhost:8080/api/recommend-songs', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ imageParts }),
-            });
+            const response = await fetch(
+                `${process.env.NEXT_PUBLIC_SERVER_URL}/api/recommend-songs`,
+                {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ imageParts }),
+                }
+            );
             if (response.status !== 200) {
                 throw new Error('Error generating songs');
             }
