@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Spotify } from 'react-spotify-embed';
 import SongLoading from './song-loading';
+import SpotifyFrames from './spotify-frames';
 
 type Props = {
     loading: boolean;
@@ -28,32 +28,7 @@ export default function SongResults({
                 <SongLoading />
             ) : (
                 <>
-                    <div className="w-full max-w-4xl mx-auto mb-8">
-                        <h1 className="text-xl font-bold text-center mb-4">
-                            Bollywood Songs
-                        </h1>
-                        {bollywoodSongsToShow.map((id) => (
-                            <Spotify
-                                wide
-                                link={`https://open.spotify.com/track/${id}`}
-                                key={id}
-                                className="mb-4 shadow-md"
-                            />
-                        ))}
-                    </div>
-                    <div className="w-full max-w-4xl mx-auto">
-                        <h1 className="text-xl font-bold text-center mb-4">
-                            Hollywood Songs
-                        </h1>
-                        {hollywoodSongsToShow.map((id) => (
-                            <Spotify
-                                wide
-                                link={`https://open.spotify.com/track/${id}`}
-                                key={id}
-                                className="mb-4 shadow-md"
-                            />
-                        ))}
-                    </div>
+                    <SpotifyFrames {...{ bollywoodSongsToShow, hollywoodSongsToShow }} />
                     <div className="absolute bottom-2 right-2">
                         {!showAll && (
                             <button
