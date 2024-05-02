@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import Link from 'next/link';
 import { Geologica } from 'next/font/google';
 import { twMerge } from 'tailwind-merge';
 import { TracingBeam } from '@/components/how-it-works/tracing-beam';
@@ -10,6 +11,11 @@ const HowItWorks = () => {
     return (
         <TracingBeam className="px-6">
             <div className="max-w-2xl mx-auto antialiased pt-10 relative">
+                <Link href="/">
+                    <button className="rounded-full px-2 py-1 border-2 border-blue-500 hover:bg-blue-500 hover:text-white mb-6">
+                        ⇽ Go Back
+                    </button>
+                </Link>
                 <h1 className={twMerge(geologica.className, 'text-7xl mb-4')}>
                     # How It Works
                 </h1>
