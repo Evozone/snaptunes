@@ -2,7 +2,7 @@
 import React from 'react';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
-const AnimatedPaths = dynamic(() => import('./paths/animated-paths'), {
+const AnimatedPaths = dynamic(() => import('./landing-page/animated-paths'), {
     ssr: false,
 });
 

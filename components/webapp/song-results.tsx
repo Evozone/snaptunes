@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Spotify } from 'react-spotify-embed';
+import SongLoading from './song-loading';
 
 type Props = {
     loading: boolean;
@@ -24,9 +25,7 @@ export default function SongResults({
     return (
         <>
             {loading ? (
-                <div className="w-full max-w-4xl mx-auto text-center">
-                    <p>Loading...</p>
-                </div>
+                <SongLoading />
             ) : (
                 <>
                     <div className="w-full max-w-4xl mx-auto mb-8">

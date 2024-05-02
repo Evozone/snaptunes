@@ -2,7 +2,7 @@
 import React from 'react';
 import { Geologica } from 'next/font/google';
 import { twMerge } from 'tailwind-merge';
-import { TracingBeam } from '@/components/tracing-beam';
+import { TracingBeam } from '@/components/how-it-works/tracing-beam';
 
 const geologica = Geologica({ subsets: ['latin'] });
 

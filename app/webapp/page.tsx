@@ -1,11 +1,12 @@
 'use client';
 
-import AppBackground from '@/components/AppBackground';
+import AppBackground from '@/components/webapp/AppBackground';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 
-import SongResults from '@/components/song-results';
-import { FileInput } from '@/components/FileInput';
+import SongResults from '@/components/webapp/song-results';
+import { FileInput } from '@/components/webapp/FileInput';
+import NoSongs from '@/components/webapp/no-songs';
 
 interface FileWithUrl {
     extension: string;
@@ -119,7 +120,7 @@ const WebApp = () => {
     return (
         <AppBackground>
             <div className="absolute z-50 inset-0 flex items-center justify-center p-4">
-                <div className="bg-white/20 backdrop-blur-lg backdrop-filter rounded-lg p-4 border-white w-full h-full flex">
+                <div className="bg-white/30 backdrop-blur-lg backdrop-filter rounded-lg p-4 border-white w-full h-full flex">
                     <div className="absolute top-2 left-0">
                         <Link href="/">
                             <button className="rounded-full px-3 py-2 ml-4 bg-white text-black hover:bg-blue-600 hover:text-white">
@@ -137,13 +138,13 @@ const WebApp = () => {
                         />
                     </div>
                     <div className="flex flex-col items-center justify-center w-1/2 h-full">
-                        <div className="h-5/6 items-center w-full justify-start border-2 ml-4 p-4 rounded-lg overflow-y-auto border-dashed">
+                        <div className="h-5/6 items-center w-full ml-4 p-4 rounded-lg grid place-items-center overflow-y-auto">
                             {rightActive ? (
                                 <SongResults
                                     {...{ loading, bollywoodSongsId, hollywoodSongsId }}
                                 />
                             ) : (
-                                <p className="text-white text-xl">No songs to display</p>
+                                <NoSongs />
                             )}
                         </div>
                     </div>
