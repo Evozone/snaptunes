@@ -22,7 +22,7 @@ const LandingPage = ({
 }) => {
     return (
         <div className={className}>
-            <div className="absolute w-screen" style={{ zIndex: 50 }}>
+            <div className="absolute w-screen ml-20" style={{ zIndex: 50 }}>
                 {/* Title */}
                 <p
                     className={`${geologica.className} text-lg md:text-7xl pb-4 text-center`}
