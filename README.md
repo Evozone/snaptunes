@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<div align="center">
+    <table>
+        <tbody>
+            <td align="center"><img src="client/public/assets/icon-96x96.png" >
+    </td>  
+        </tbody>
+    </table>
+</div>
 
-## Getting Started
+# SnapTunes: 📸 Your photos, your soundtrack. 🎶 Discover Hollywood and Bollywood hits that match your photos' vibe instantly! 💫
 
-First, run the development server:
+## Try it out 🚀
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+[https://snap-tunes.vercel.app/](https://snap-tunes.vercel.app/)
+<br/>
+<br/>
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Description ℹ️
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+SnapTunes is your personalized photo DJ! Upload your photos, and SnapTunes analyzes them to recommend the perfect Hollywood and Bollywood songs that match the vibe. It's like having a soundtrack tailored to your moments, making every photo-sharing experience more memorable and fun! 📸🎶<br/>
+This project was built for Google AI Hackathon. Here's the submission -
+<br/>
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Technologies Used 🧰
 
-## Learn More
+|                                                         |                       Technologies                        |
+| ------------------------------------------------------- | :-------------------------------------------------------: |
+| Frontend                                                | Next.js, tailwind CSS, Framer-motion, Vercel, Spotify API |
+| [Backend](https://github.com/Evozone/SnapTunes-Backend) |        Express.js, Google-AI (Gemini) API, Railway        |
 
-To learn more about Next.js, take a look at the following resources:
+<br/>
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Screenshots 🖼️
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+<img src='' alt='landing page'>
+<br/>
+<img src='https://raw.githubusercontent.com/vishal-codes/repo-images/main/snap-tunes-webapp.png'>
 
-## Deploy on Vercel
+<br/>
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Attribution 📝
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+the svg named "no_picture.svg" is provided by [undraw.co](https://undraw.co/)
+
+<br/>
+
+## Project Maintainer 🛠
+
+<div align="center">
+<table>
+    <tbody>
+        <td align="center"><a href="https://github.com/vishal-codes"><img alt="github profile" src="https://avatars.githubusercontent.com/u/79784161" width="130px;"><br><sub><b> Vishal Shinde </b></sub></a><br><a title="Code"> Web Developer</a><br></td>  
+           <td align="center"><a href="https://github.com/bhargavmodak"><img alt="github profile" src="https://avatars.githubusercontent.com/u/82528318" width="130px;"><br><sub><b> Bhargav Modak </b></sub></a><br><a title="Code"> Web Developer</a><br></td> 
+    </tbody>
+    
+</table>
+</div>
+
+<br>
