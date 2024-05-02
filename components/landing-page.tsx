@@ -22,7 +22,7 @@ const LandingPage = ({
 }) => {
     return (
         <div className={className}>
-            <div className="absolute w-screen ml-20" style={{ zIndex: 50 }}>
+            <div className="absolute w-screen" style={{ zIndex: 50 }}>
                 {/* Title */}
                 <p
                     className={`${geologica.className} text-lg md:text-7xl pb-4 text-center`}
@@ -64,6 +64,19 @@ const LandingPage = ({
             </div>
 
             <AnimatedPaths />
+
+            {/* Footer */}
+            <div className="w-full flex justify-center z-50 items-center absolute bottom-0">
+                <p className="text-xs text-neutral-400">
+                    Inspired by{' '}
+                    <a
+                        href="https://deepmind.google/technologies/gemini/#build-with-gemini"
+                        className="text-blue-700"
+                    >
+                        &apos;Build With Gemini&apos;
+                    </a>
+                </p>
+            </div>
         </div>
     );
 };
