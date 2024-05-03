@@ -36,10 +36,10 @@ const LandingPage = ({
                     {description}
                 </p>
                 {/* Icon/Logo */}
-                <div className="w-full h-[890px] -top-72 md:-top-64 flex items-center justify-center bg-red-transparent absolute">
+                <div className="w-full h-[890px] -top-72 md:-top-64 flex items-center justify-center absolute">
                     {/* Pill */}
                     <div
-                        className="w-40 h-40 rounded-full md:px-4 md:py-2 px-2 py-1 md:mt-28 mt-9 z-30 bg-blue-200"
+                        className="w-40 h-40 rounded-full md:px-4 md:py-2 px-2 py-1 md:mt-28 mt-9 z-30"
                         style={{
                             backgroundImage: `url('./logo.png')`,
                             backgroundSize: 'contain',

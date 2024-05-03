@@ -1,7 +1,7 @@
 <div align="center">
     <table>
         <tbody>
-            <td align="center"><img src="client/public/assets/icon-96x96.png" >
+            <td align="center"><img src="/public/logo.png" width="200px;"></td>
     </td>  
         </tbody>
     </table>
