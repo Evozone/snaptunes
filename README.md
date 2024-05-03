@@ -32,7 +32,7 @@ This project was built for Google AI Hackathon. Here's the submission -
 
 ## Screenshots 🖼️
 
-<img src='' alt='landing page'>
+<img src='https://raw.githubusercontent.com/vishal-codes/repo-images/main/landing-page.png' alt='landing page'>
 <br/>
 <img src='https://raw.githubusercontent.com/vishal-codes/repo-images/main/snap-tunes-webapp.png'>
 
