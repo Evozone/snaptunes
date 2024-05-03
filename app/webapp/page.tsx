@@ -59,21 +59,22 @@ const WebApp = () => {
         try {
             setLoading(true);
             setRightActive(true);
-            const response = await fetch('http://localhost:8080/api/recommend-songs', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ imageParts }),
-            });
+            const response = await fetch(
+                `${process.env.NEXT_PUBLIC_SERVER_URL}/api/recommend-songs`,
+                {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ imageParts }),
+                }
+            );
             if (response.status !== 200) {
                 throw new Error('Error generating songs');
             }
             // the response is in text format
             const data = await response.text();
             const jsonData = JSON.parse(data);
-            console.log(typeof jsonData);
-            console.log(jsonData);
 
             const bollywoodSongs = jsonData.Bollywood;
             // get song id for first 2 bollywoodSongs
@@ -92,7 +93,7 @@ const WebApp = () => {
             setLoading(false);
         } catch (error) {
             console.error(error);
-            alert('Error generating songs');
+            alert('Error generating songs, please refresh the page and try again.');
         }
     };
 
@@ -113,7 +114,7 @@ const WebApp = () => {
             return data.tracks.items[0].id;
         } catch (error) {
             console.error(error);
-            alert('Error getting song id');
+            alert('Error generating songs, please refresh the page and try again.');
         }
     };
 

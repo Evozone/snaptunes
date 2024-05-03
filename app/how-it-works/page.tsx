@@ -5,7 +5,11 @@ import { Geologica } from 'next/font/google';
 import { twMerge } from 'tailwind-merge';
 import { TracingBeam } from '@/components/how-it-works/tracing-beam';
 
-const geologica = Geologica({ subsets: ['latin'] });
+const geologica = Geologica({
+    subsets: ['latin'],
+    display: 'swap',
+    adjustFontFallback: false,
+});
 
 const HowItWorks = () => {
     return (
@@ -90,7 +94,7 @@ const dummyContent = [
                 <CustomH3>What is the Gemini 1.0 Pro API?</CustomH3>
                 <p>
                     The Gemini 1.0 Pro API is a robust interface that allows developers to
-                    interact with Google's advanced LLM. It supports a variety of
+                    interact with Google&apos;s advanced LLM. It supports a variety of
                     operations, including text generation, image analysis, and code
                     synthesis. The API accepts JSON-formatted requests and returns
                     responses in the same format, facilitating seamless integration into
@@ -111,8 +115,8 @@ const dummyContent = [
                     message that specifies the input as an image, and the output as a JSON
                     string. This message is encoded and sent to the API, which then
                     processes the image using its neural network to understand the content
-                    and context, ultimately suggesting songs that align with the image's
-                    vibe.
+                    and context, ultimately suggesting songs that align with the
+                    image&apos;s vibe.
                 </p>
                 <CustomH3>Interpreting the Gemini 1.0 Pro response</CustomH3>
                 <p>
@@ -178,14 +182,14 @@ const dummyContent = [
                     terms are not exact, which is crucial for interpreting the varied
                     inputs from users. Our system implements fuzzy searching through the
                     Spotify API to retrieve song IDs that best match the mood and elements
-                    of the user's image. This process requires a valid Spotify token,
+                    of the user&apos;s image. This process requires a valid Spotify token,
                     which we regenerate every 1800000 milliseconds (30 minutes) to
                     maintain uninterrupted service.
                 </p>
                 <CustomH3>Embedding Spotify song iframes</CustomH3>
                 <p>
-                    Once we have the song IDs, we can embed Spotify's song iframes into
-                    our application, allowing users to play previews of the suggested
+                    Once we have the song IDs, we can embed Spotify&apos;s song iframes
+                    into our application, allowing users to play previews of the suggested
                     songs directly on our platform. This feature enhances interactivity
                     and engagement, providing users with an immediate and seamless
                     audio-visual experience. The embedding of song iframes does not
