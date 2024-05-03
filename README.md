@@ -18,7 +18,7 @@
 ## Description ℹ️
 
 SnapTunes is your personalized photo DJ! Upload your photos, and SnapTunes analyzes them to recommend the perfect Hollywood and Bollywood songs that match the vibe. It's like having a soundtrack tailored to your moments, making every photo-sharing experience more memorable and fun! 📸🎶<br/>
-This project was built for Google AI Hackathon. Here's the submission -
+This project was built for Google AI Hackathon. Here's the submission - https://devpost.com/software/snaptunes
 <br/>
 
 ## Technologies Used 🧰
