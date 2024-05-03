@@ -24,6 +24,15 @@ const HowItWorks = () => {
                     # How It Works
                 </h1>
                 <hr className="border-2 border-blue-500 mb-10" />
+
+                <img
+                    src="/working.png"
+                    alt="How It Works"
+                    className="mb-10"
+                    loading="lazy"
+                    decoding="async"
+                />
+
                 {dummyContent.map((item, index) => (
                     <div key={`content-${index}`} className="mb-10">
                         <h2 className={twMerge(geologica.className, 'text-4xl mb-4')}>
