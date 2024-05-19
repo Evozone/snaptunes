@@ -12,7 +12,7 @@ interface OnePathProps {
     type: number;
 }
 
-const viewportWidth = window.innerWidth;
+const viewportWidth = document.documentElement.clientWidth;
 
 const OnePath: React.FC<OnePathProps> = ({
     pathData,

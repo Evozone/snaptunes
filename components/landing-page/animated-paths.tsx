@@ -66,12 +66,10 @@ const paths = [
     createPath(PATH_OUT_4, '#FFB7C5', 1),
 ];
 
-const viewportWidth = window.innerWidth;
-
 export default function AnimatedPaths() {
     return (
         <div className="w-full h-[890px] flex justify-center">
-            <div className="relative" style={{ width: viewportWidth }}>
+            <div className="relative w-full h-full">
                 {paths.map((path, index) => (
                     <OnePath key={index} {...path} />
                 ))}
