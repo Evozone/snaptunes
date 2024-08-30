@@ -6,10 +6,7 @@ export default function Home() {
     const ref = React.useRef(null);
 
     return (
-        <div
-            className="h-screen bg-black w-screen relative pt-24 overflow-clip"
-            ref={ref}
-        >
+        <div className="h-screen bg-black w-screen" ref={ref}>
             <LandingPage title="SnapTunes" description="Transform pixels into music." />
         </div>
     );

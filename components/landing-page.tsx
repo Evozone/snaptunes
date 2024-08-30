@@ -14,15 +14,13 @@ const jersey25 = Jersey_25({ weight: '400', subsets: ['latin'] });
 const LandingPage = ({
     title,
     description,
-    className,
 }: {
     title?: string;
     description?: string;
-    className?: string;
 }) => {
     return (
-        <div className={className}>
-            <div className="absolute w-screen" style={{ zIndex: 50 }}>
+        <div className="w-screen">
+            <div className="flex flex-col pt-160 pb-10 items-center">
                 {/* Title */}
                 <p
                     className={`${geologica.className} text-5xl md:text-7xl pb-4 text-center`}
@@ -36,7 +34,7 @@ const LandingPage = ({
                     {description}
                 </p>
                 {/* Icon/Logo */}
-                <div className="w-full h-[890px] -top-52 md:-top-64 flex items-center justify-center absolute">
+                <div className="mb-10 md:mb-20">
                     {/* Pill */}
                     <div
                         className="w-40 h-40 rounded-full md:px-4 md:py-2 px-2 py-1 md:mt-28 mt-9 z-30"
@@ -49,27 +47,29 @@ const LandingPage = ({
                     ></div>
                 </div>
                 {/* Two buttons */}
-                <div className="w-full flex justify-center md:mt-52 mt-96 z-50 items-center absolute">
-                    <Link href="/webapp">
-                        <button className="rounded-full px-3 py-2 bg-black text-blue-700 gradient-border">
-                            Get Started Now!
-                        </button>
-                    </Link>
-                    <Link href="/how-it-works">
-                        <button className="rounded-full px-3 py-2 ml-4 bg-white text-black hover:bg-blue-600 hover:text-white">
-                            How it Works
-                        </button>
-                    </Link>
+                <div>
+                    <div className="z-50 relative flex">
+                        <Link href="/webapp">
+                            <button className="rounded-full px-3 py-2 bg-black text-blue-700 gradient-border">
+                                Get Started Now!
+                            </button>
+                        </Link>
+                        <Link href="/how-it-works">
+                            <button className="rounded-full px-3 py-2 ml-4 bg-white text-black hover:bg-blue-600 hover:text-white">
+                                How it Works
+                            </button>
+                        </Link>
+                    </div>
                 </div>
             </div>
-            <AnimatedPaths />
+            {/* <AnimatedPaths /> */}
             {/* Footer */}
             <div className="w-full flex justify-center z-50 items-center absolute bottom-0">
                 <p className="text-xs text-neutral-400">
                     Inspired by{' '}
                     <a
                         href="https://deepmind.google/technologies/gemini/#build-with-gemini"
-                        className="text-blue-700"
+                        className="text-blue-400"
                         target="_blank"
                         rel="noopener noreferrer"
                     >
