@@ -1,24 +1,27 @@
 <div align="center">
-    <table>
-        <tbody>
-            <td align="center"><img src="/public/logo.png" width="200px;"></td>
-    </td>  
-        </tbody>
-    </table>
+    <img src="/public/logo.png" alt="SnapTunes Logo" width="200px">
 </div>
 
-# SnapTunes: 📸 Your photos, your soundtrack. 🎶 Discover Hollywood and Bollywood hits that match your photos' vibe instantly! 💫
-
-## Try it out 🚀
-
-[https://snap-tunes.vercel.app/](https://snap-tunes.vercel.app/)
-<br/>
-<br/>
-
-## Description ℹ️
+<h1 align="center">SnapTunes</h1>
+<p align="center">
+  <img src="https://img.shields.io/github/issues/evozone/snaptunes" alt="Issues">
+  <img src="https://img.shields.io/github/forks/evozone/snaptunes" alt="Forks">
+  <img src="https://img.shields.io/github/stars/evozone/snaptunes" alt="Stars">
+</p>
+<p align="center">
+  <a href="https://snap-tunes.vercel.app/">
+    <img src="https://img.shields.io/badge/View-Webapp-blue?style=for-the-badge" alt="Webapp">
+  </a>
+</p>
+<h3 align="center">
+📸 Your photos, your soundtrack. <br>
+🎶 Discover Hollywood and Bollywood hits that match your photos' vibe instantly! 💫
+</h3>
+<hr style="height:2px;border-width:0;color:gray;background-color:gray">
 
 SnapTunes is your personalized photo DJ! Upload your photos, and SnapTunes analyzes them to recommend the perfect Hollywood and Bollywood songs that match the vibe. It's like having a soundtrack tailored to your moments, making every photo-sharing experience more memorable and fun! 📸🎶<br/>
-This project was built for Google AI Hackathon. Here's the submission - https://devpost.com/software/snaptunes
+
+↝ This project was built for Google AI Hackathon. Here's the submission - https://devpost.com/software/snaptunes
 <br/>
 
 ## Technologies Used 🧰
@@ -44,7 +47,7 @@ the svg named "no_picture.svg" is provided by [undraw.co](https://undraw.co/)
 
 <br/>
 
-## Project Maintainer 🛠
+## Project Maintainers 🛠
 
 <div align="center">
 <table>
