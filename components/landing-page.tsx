@@ -21,14 +21,14 @@ const LandingPage = ({
 
             {/* Icon/Logo */}
             <div className="w-full lg:w-1/2 h-1/2 lg:h-screen flex justify-center items-center">
-                <div className="w-64 h-64 relative">
+                <div className="w-64 h-64 lg:w-96 lg:h-96 relative">
                     <div className="rainbow-text-animated w-full h-full" />
                     <Image
                         className="absolute"
                         src="/logo.svg"
                         alt="Logo"
-                        width={256}
-                        height={256}
+                        width={400}
+                        height={400}
                     />
                 </div>
             </div>

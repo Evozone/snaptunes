@@ -1,15 +1,15 @@
 import React from 'react';
 import Link from 'next/link';
 
-import { Geologica, Jersey_25 } from 'next/font/google';
+import { Tilt_Warp, Jersey_25 } from 'next/font/google';
 
-const geologica = Geologica({ subsets: ['latin'] });
+const tilt_warp = Tilt_Warp({ subsets: ['latin'] });
 const jersey25 = Jersey_25({ weight: '400', subsets: ['latin'] });
 
 function LPActionArea({ title, description }: { title?: string; description?: string }) {
     return (
         <>
-            <p className={`${geologica.className} text-5xl md:text-7xl pb-4`}>{title}</p>
+            <p className={`${tilt_warp.className} text-5xl md:text-7xl pb-4`}>{title}</p>
             <p
                 className={`${jersey25.className} text-lg md:text-2xl text-neutral-400 my-4 max-w-lg `}
             >
