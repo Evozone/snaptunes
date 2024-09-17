@@ -120,8 +120,8 @@ const WebApp = () => {
 
     return (
         <AppBackground>
-            <div className="absolute z-50 inset-0 flex items-center justify-center p-4">
-                <div className="bg-white/30 backdrop-blur-lg backdrop-filter rounded-lg p-4 border-white w-full h-full flex flex-wrap overflow-y-auto">
+            <div className="absolute z-50 inset-0 flex items-center justify-center">
+                <div className="bg-white/30 backdrop-blur-lg backdrop-filter p-4 border-white w-full h-full flex flex-wrap overflow-y-auto">
                     <div className="absolute top-2 left-0">
                         <Link href="/">
                             <button className="rounded-full px-2 py-1 ml-4 bg-white text-black hover:bg-blue-600 hover:text-white">
